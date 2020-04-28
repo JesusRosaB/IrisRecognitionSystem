@@ -11,4 +11,5 @@ Iris=IrisExtraction(A,Pupil); %Centroid and radius of the Iris
 
 %% Encoding
 t = Encoding(polar_array, noise_mask);
+
 endfunction

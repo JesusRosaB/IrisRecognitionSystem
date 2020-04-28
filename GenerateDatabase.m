@@ -1,11 +1,24 @@
+
+%for i = 1:3
+%  prueba = strcat('DATA/DB/00', mat2str(i), '_1_1.bmp')
+%  t(i) = cell (50,300)
+%  t(i) = GenerateTemplate(strcat('DATA/DB/00', mat2str(i), '_1_1.bmp'));
+%end
+
+
+pkg load image
+
 clear all
 close all
-%[t1]=GenerateTemplate('DATA/DB/001_1_1.bmp');
-[t2]=GenerateTemplate('DATA/DB/002_1_1.bmp');
-[t3]=GenerateTemplate('DATA/DB/003_1_1.bmp');
 
-%save()
+files = dir('DATA/DB/')
 
-%% Hamming distances between two templates
-%hd12 = Hammingd(t1, t2)
-%hd13 = Hammingd(t1, t3)
+t = cell(size(files,2))
+j = 1
+
+for i = 3:size(files,1)  
+  t(j) = GenerateTemplate(strcat('DATA/DB/',files(i).name));
+  j++;
+end
+
+save -binary DB.mat
