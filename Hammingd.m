@@ -8,11 +8,11 @@ j = 1
 for i = -3 : 3
   
   u = shift(u,i,2);
-  w = xor(u,v)
-  d(j) = sum(w(:)) /length(w(:))
+  w = xor(u,v);
+  d(j) = sum(w(:)) /length(w(:));
   j++;
 end
 
-d = min(d)
+d = min(d);
 
 endfunction
