@@ -5,19 +5,20 @@ close all
 
 FalseFiles = dir('DATA/APPLICANTS/FALSE/')
 
+FalseFiles(1,:) = [];
+FalseFiles(1,:) = [];
+
 falses = cell(size(FalseFiles,2))
-j = 1
 
 load -binary DB.mat
 
-for i = 3:size(FalseFiles,1)  
-  falses(j) = GenerateTemplate(strcat('DATA/APPLICANTS/FALSE/',FalseFiles(i).name));
+for i = 1:size(FalseFiles,1)  
+  falses(i) = GenerateTemplate(strcat('DATA/APPLICANTS/FALSE/',FalseFiles(i).name));
   for z = 3:size(files(:),1)
     if(FalseFiles(i).name(1:3) == files(z).name(1:3))
-      hd(j) = Hammingd(cell2mat(falses(1,j)), cell2mat(t(1,z-2)));
+      hd(i) = Hammingd(cell2mat(falses(1,i)), cell2mat(t(1,z-2)));
     end
   end
-  j++;
 end
 
 %load -binary DB.mat
@@ -31,12 +32,12 @@ end
 %end
 
 for i = 1:size(hd(:),1)
-  if (hd(i) > 0.435)
+  if (hd(i) > 0.462)
     results(i) = 0;
   end
-  if (hd(i) <= 0.435)
+  if (hd(i) <= 0.462)
     results(i) = 1;
   end
 end
 
-save -binary FalseResultsAfter.mat
+%save -binary FalseResultsAfter4.mat

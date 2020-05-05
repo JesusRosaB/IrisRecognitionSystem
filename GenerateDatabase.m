@@ -13,12 +13,13 @@ close all
 
 files = dir('DATA/DB/')
 
-t = cell(size(files,2))
-j = 1
+files(1,:) = []
+files(1,:) = []
 
-for i = 3:size(files,1)  
-  t(j) = GenerateTemplate(strcat('DATA/DB/',files(i).name));
-  j++;
+t = cell(size(files,2))
+
+for i = 1:size(files,1)  
+  t(i) = GenerateTemplate(strcat('DATA/DB/',files(i).name));
 end
 
 save -binary DB.mat
