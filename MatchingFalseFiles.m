@@ -32,12 +32,12 @@ end
 %end
 
 for i = 1:size(hd(:),1)
-  if (hd(i) > 0.462)
+  if (hd(i) > 0.465)
     results(i) = 0;
   end
-  if (hd(i) <= 0.462)
+  if (hd(i) <= 0.465)
     results(i) = 1;
   end
 end
 
-%save -binary FalseResultsAfter4.mat
+save -binary FalseResults.mat
